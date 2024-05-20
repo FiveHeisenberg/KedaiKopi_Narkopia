@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Narkopia</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/menu.css">
+
+    <!-- Icon Web -->
+    <link rel="icon" type="image/x-icon" href="img/logo/logo.png">
+</head>
+<body>
+    <!-- Side bar start -->
+    <div class="sidebar" id="sidebar">
+        <!-- logo -->
+        <i><h1 class="logo">Nar<span>kopia</span></h1></i>
+
+        <!-- List Fitur -->
+        <div class="sidebar-menus">
+            <a href="shop.html"><i class='bx bx-arrow-back'></i>Back</a>
+            <a href="#"><i class='bx bx-mail-send'></i>Contact Person</a>
+            <a href="indeks.html"><i class='bx bx-home-alt'></i>Main Menu</a>
+        </div>
+
+        <!-- Account -->
+        <div class="sidebar-acc">
+            <a href="#"><i class='bx bx-user-circle'></i>Account</a>
+        </div>
+    </div>
+    <!-- Side bar End -->
+
+    <!-- Main Start -->
+    <div class="main">
+        <!-- Navbar -->
+        <div class="main-navbar">
+            <!-- Menu dalam versi mobile -->
+            <a href="#" id="hamburger"><i class='bx bx-menu'></i></a>
+            <!-- Search bar -->
+            <div class="search">
+                <input type="text" placeholder="What do you like to drink?">
+                <button class="search-btn" onclick="searchProducts()">Search</button>
+            </div>
+            <!-- Profile -->
+            <div class="profile">
+                <a href="#" class="cart" onclick="toggleCart()">
+                    <i class='bx bxs-cart'></i>
+                </a>
+                <a href="#" class="user">
+                    <i class='bx bx-user-circle'></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Notifikasi Produk Ke Keranjang -->
+        <div class="notification" id="notification">
+            Product added to cart successfully!
+        </div>
+
+        <!-- Page Keranjang Belanja -->
+        <div class="cart-popup" id="cart-popup">
+            <div class="cart-content">
+                <!-- Cart Navbar -->
+                <div class="cart-navbar">
+                    <h2>Keranjang Belanja</h2>
+                    <span class="close" onclick="toggleCart()">&times;</span>
+                </div>
+                <!-- Cart Item -->
+                <div class="listCart">
+                    <div class="item"></div>
+                </div>
+                <!-- Checkout -->
+                <div class="checkout">
+                    <a href="checkout.html">
+                        <button class="checkout-button">Checkout</button>
+                    </a>                     
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div class="main-menus">
+            <div>
+                <h2 class="main-title-category">Menu Category</h2>
+            </div>
+            <!-- Filter Kategori Menu -->
+            <div class="main-filter">
+                <div class="filter-wrapper">
+                    <div class="filter-card" onclick="displayAllItems()">
+                        <a href="#all">
+                            <div class="filter-icon">
+                                <i class='bx bxs-food-menu'></i>                     
+                            </div>
+                            <p>All Menu</p> 
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('coffee')">
+                        <a href="#coffee">
+                            <div class="filter-icon">
+                                <i class='bx bx-coffee'></i>                        
+                            </div>
+                            <p>Coffee</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('noncoffee')">
+                        <a href="#noncoffee">
+                            <div class="filter-icon">
+                                <i class='bx bxs-drink'></i>                        
+                            </div>
+                            <p>Non Coffee</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('food')">
+                        <a href="#food">
+                            <div class="filter-icon">
+                                <i class='bx bxs-bowl-hot'></i>                        
+                            </div>
+                            <p>Food</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('icekrim')">
+                        <a href="#icekrim">
+                            <div class="filter-icon">
+                                <i class='bx bxs-popsicle'></i>                        
+                            </div>
+                            <p>Ice Krim</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('coffeeathome')">
+                        <a href="#coffeeathome">
+                            <div class="filter-icon">
+                                <i class='bx bxs-shopping-bag'></i>                        
+                            </div>
+                            <p>Coffee At Home</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('merch')">
+                        <a href="#merch">
+                            <div class="filter-icon">
+                                <i class='bx bxs-gift'></i>                        
+                            </div>
+                            <p>Merchandise</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="divider">
+
+            <!-- List makanan -->
+            <div class="main-detail">
+                <h2 class="main-title">Choose Your Order</h2>
+                <section id="all">
+                    <h2 id="categoryTitle">All Items</h2>
+                    <div class="detail-wrapper">
+                        <div class="listProduct">
+                            <!-- Tempat Produk Ditampilkan -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Main End -->
+
+    <!-- feather icon  -->
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- JS -->
+    <script src="js/menu.js"></script>
+
+<script>
+    let iconCart = document.querySelector('.detail-wrapper');
+    let cart = document.querySelector('.listCart');
+    let container = document.querySelector('.main-detail');
+    let close = document.querySelector('.close');
+
+    let products = null;
+    // Get data from JSON file
+    fetch('product.json')
+        .then(response => response.json())
+        .then(data => {
+            products = data;
+            addDataToHTML();
+    });
+
+    // Show product data in list
+    function addDataToHTML() {
+        // Remove default data from HTML
+        let listProductHTML = document.querySelector('.detail-wrapper');
+        listProductHTML.innerHTML = '';
+
+        // Add new data
+        if(products != null) { // If has data
+            products.forEach(product => {
+                let newProduct = document.createElement('div');
+                newProduct.classList.add('pro');
+                newProduct.innerHTML = `
+                <img src="img/item/${product.image}">
+                <div class="des">
+                    <h5>${product.name}</h5>
+                    <div class="star" style="color: gold;">
+                        ${generateStars()}
+                    </div>
+                    <h4>${product.price}K</h4>
+                </div>
+                <a href="#" onclick="addCart('${product.name}'); event.preventDefault();"><i class='bx bx-cart' id="cart" data-price="${product.price}"></i></a>
+            `;
+                listProductHTML.appendChild(newProduct);
+            });
+        }
+    }
+
+    let listCart = [];
+    function checkCart() {
+        let cookieValue = document.cookie.split('; ').find(row => row.startsWith('listCart='));
+        if(cookieValue) {
+            listCart = JSON.parse(cookieValue.split('=')[1]);
+        } else {
+            listCart = [];
+        }
+    }
+    checkCart();
+
+    function addCart(idProduct) {
+        let product = products.find(p => p.name === idProduct);
+        if (!product) return;
+
+        let cartItem = listCart.find(item => item.name === idProduct);
+        if (cartItem) {
+            cartItem.quantity++;
+        } else {
+            cartItem = {...product, quantity: 1};
+            listCart.push(cartItem);
+        }
+
+        document.cookie = "listCart=" + JSON.stringify(listCart) + "; expires=Thu, 31 Dec 2025 23:59:59 UTC; path=/;";
+        addCartToHTML();
+    }
+
+    function addCartToHTML() {
+        let listCartHTML = document.querySelector('.listCart');
+        listCartHTML.innerHTML = '';
+
+        let totalQuantity = 0;
+        if(listCart.length) {
+            listCart.forEach(product => {
+                if(product) {
+                    let newCart = document.createElement('div');
+                    newCart.classList.add('item');
+                    newCart.innerHTML = `
+                    <img src="img/item/${product.image}">
+                    <div class="content">
+                        <div class="name">
+                            ${product.name}
+                        </div>
+                        <div class="price">
+                            ${product.price}K / ${product.quantity} product
+                        </div>
+                    </div>
+                    <div class="quantity">
+                        <button onclick="changeQuantity('${product.name}', '-')"><b>-</b></button>
+                        <span class="value">${product.quantity}</span>
+                        <button onclick="changeQuantity('${product.name}', '+')"><b>+</b></button>
+                    </div>`;
+                    listCartHTML.appendChild(newCart);
+                    totalQuantity += product.quantity;
+                }
+            });
+        }
+
+        let totalHTML = document.querySelector('.totalQuantity');
+        if (totalHTML) {
+            totalHTML.innerText = totalQuantity;
+        }
+    }
+
+    function changeQuantity(idProduct, type) {
+        let cartItem = listCart.find(item => item.name === idProduct);
+        if (!cartItem) return;
+
+        if (type === '+') {
+            cartItem.quantity++;
+        } else if (type === '-') {
+            cartItem.quantity--;
+            if (cartItem.quantity <= 0) {
+                listCart = listCart.filter(item => item.name !== idProduct);
+            }
+        }
+
+        document.cookie = "listCart=" + JSON.stringify(listCart) + "; expires=Thu, 31 Dec 2025 23:59:59 UTC; path=/;";
+        addCartToHTML();
+    }
+
+    // Fungsi Looping Bintang
+    function generateStars() {
+        let stars = '';
+        for (let i = 0; i < 5; i++) {
+            stars += "<i class='bx bxs-star'></i>";
+        }
+        return stars;
+    }
+
+    function filterCategory(category) {
+        const menuContainer = document.querySelector('.detail-wrapper');
+        menuContainer.innerHTML = '';
+        if (products) {
+            products.forEach(item => {
+                if (item.category === category) {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('pro');
+                    itemElement.innerHTML = `
+                        <img src="img/item/${item.image}">
+                        <div class="des">
+                            <h5>${item.name}</h5>
+                            <div class="star" style="color: gold;">
+                                ${generateStars()}
+                            </div>
+                            <h4>${item.price}K</h4>
+                        </div>
+                        <a href="#" onclick="addCart('${item.name}'); event.preventDefault();"><i class='bx bx-cart' id="cart" data-price="${item.price}"></i></a>
+                    `;
+                    menuContainer.appendChild(itemElement);
+                }
+            });
+        }
+        document.getElementById('categoryTitle').textContent = category;
+    }
+
+    function displayAllItems() {
+        const menuContainer = document.querySelector('.detail-wrapper');
+        menuContainer.innerHTML = '';
+        if (products) {
+            products.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('pro');
+                itemElement.innerHTML = `
+                    <img src="img/item/${item.image}">
+                    <div class="des">
+                        <h5>${item.name}</h5>
+                        <div class="star" style="color: gold;">
+                            ${generateStars()}
+                        </div>
+                        <h4>${item.price}K</h4>
+                    </div>
+                    <a href="#" onclick="addCart('${item.name}'); event.preventDefault();"><i class='bx bx-cart' id="cart" data-price="${item.price}"></i></a>
+                `;
+                menuContainer.appendChild(itemElement);
+            });
+        }
+        document.getElementById('categoryTitle').textContent = 'All Items';
+    }
+
+    displayAllItems();
+</script>
+</body>
+</html>

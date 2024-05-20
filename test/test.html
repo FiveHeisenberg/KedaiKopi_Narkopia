@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Page</title>
+    <style>
+        /* CSS untuk tata letak halaman */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        nav a:hover {
+            color: #666;
+        }
+        section {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Category Page</h1>
+    </header>
+    <nav>
+        <a href="#all">All</a>
+        <a href="#coffee">Coffee</a>
+        <a href="#food">Food</a>
+    </nav>
+    <section id="all">
+        <h2>All Items</h2>
+        <!-- Isi untuk semua item -->
+    </section>
+    <section id="coffee" style="display: none;">
+        <h2>Coffee Items</h2>
+        <!-- Isi untuk item kopi -->
+        <h2>PAPAPAPAPAP</h2>
+        <h2>PAPAPAPAPAP</h2>
+        <h2>PAPAPAPAPAP</h2>
+        <h2>PAPAPAPAPAP</h2>
+        <h2>PAPAPAPAPAP</h2>
+    </section>
+    <section id="food" style="display: none;">
+        <h2>Food Items</h2>
+        <!-- Isi untuk item makanan -->
+        <h4>halllooo</h4>
+        <h4>halllooo</h4>
+        <h4>halllooo</h4>
+        <h4>halllooo</h4>
+        <h4>halllooo</h4>
+    </section>
+    <script>
+        // JavaScript untuk menampilkan/hide bagian yang sesuai dengan kategori yang dipilih
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

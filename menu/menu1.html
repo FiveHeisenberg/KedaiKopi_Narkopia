@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Narkopia</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/menu.css">
+
+    <!-- Icon Web -->
+    <link rel="icon" type="image/x-icon" href="img/logo/logo.png">
+</head>
+<body>
+    <!-- Side bar start -->
+    <div class="sidebar" id="sidebar">
+        <!-- logo -->
+        <i><h1 class="logo">Nar<span>kopia</span></h1></i>
+
+        <!-- List Fitur -->
+        <div class="sidebar-menus">
+            <a href="shop.html"><i class='bx bx-arrow-back'></i>Back</a>
+            <a href="#"><i class='bx bx-mail-send'></i>Contact Person</a>
+            <a href="indeks.html"><i class='bx bx-home-alt'></i>Main Menu</a>
+        </div>
+
+        <!-- Account -->
+        <div class="sidebar-acc">
+            <a href="#"><i class='bx bx-user-circle'></i>Account</a>
+        </div>
+    </div>
+    <!-- Side bar End -->
+
+    <!-- Main Start -->
+    <div class="main">
+        <!-- Navbar -->
+        <div class="main-navbar">
+            <!-- menu dalam versi mobile -->
+            <a href="#" id="hamburger"><i class='bx bx-menu'></i></i></a>
+            <!-- Search bar -->
+            <div class="search">
+                <input type="text" placeholder="What do you like drink?">
+                <button class="search-btn" onclick="searchProducts()">Search</button>
+            </div>
+            <!-- Profile -->
+            <div class="profile">
+                <a href="#" class="cart" onclick="toggleCart()">
+                    <i class='bx bxs-cart'></i>
+                </a>
+                <a href="#" class="user">
+                    <i class='bx bx-user-circle'></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Notifikasi Produk Ke Keranjang -->
+        <div class="notification" id="notification">
+            Product added to cart successfully!
+        </div>
+
+        <!-- Page Keranjang Belanja -->
+        <div class="cart-popup" id="cart-popup">
+            <div class="cart-content">
+
+                <!-- Cart Navbar -->
+                <div class="cart-navbar">
+                    <h2>Keranjang Belanja</h2>
+                    <span class="close" onclick="toggleCart()">&times;</span>
+                </div>
+
+                <!-- Cart Item -->
+                <div class="listCart">
+                    <div class="item">
+                        
+                    </div>
+                </div>
+
+                <!-- Checkout -->
+                <div class="checkout">
+                    <a href="checkout.html">
+                        <button class="checkout-button">Checkout</button>
+                    </a>                     
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+
+        <div class="main-menus">
+            <div>
+                <h2 class="main-title-category">Menu Category</h2>
+            </div>
+            <!-- Filter Kategori Menu -->
+            <div class="main-filter">
+                <div class="filter-wrapper">
+                    <div class="filter-card" onclick="displayAllItems()">
+                        <a href="#all">
+                            <div class="filter-icon">
+                                <i class='bx bxs-food-menu'></i>                     
+                            </div>
+                            <p>All Menu</p> 
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('coffee')">
+                        <a href="#coffee">
+                            <div class="filter-icon">
+                                <i class='bx bx-coffee'></i>                        
+                            </div>
+                            <p>Coffee</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('noncoffee')">
+                        <a href="#noncoffee">
+                            <div class="filter-icon">
+                                <i class='bx bxs-drink'></i>                        
+                            </div>
+                            <p>Non Coffee</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('food')">
+                        <a href="#food">
+                            <div class="filter-icon">
+                                <i class='bx bxs-bowl-hot'></i>                        
+                            </div>
+                            <p>Food</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('icekrim')">
+                        <a href="#icekrim">
+                            <div class="filter-icon">
+                                <i class='bx bxs-popsicle'></i>                        
+                            </div>
+                            <p>Ice Krim</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('coffeeathome')">
+                        <a href="#coffeeathome">
+                            <div class="filter-icon">
+                                <i class='bx bxs-shopping-bag'></i>                        
+                            </div>
+                            <p>Coffee At Home</p>
+                        </a>
+                    </div>
+                    <div class="filter-card" onclick="filterCategory('merch')">
+                        <a href="#merch">
+                            <div class="filter-icon">
+                                <i class='bx bxs-gift'></i>                        
+                            </div>
+                            <p>Mercandise</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="divider">
+
+            <!-- List makanan -->
+            <div class="main-detail">
+                <h2 class="main-title">Choose Your Order</h2>
+                <section id="all">
+                    <h2 id="categoryTitle">All Item</h2>
+                    <div class="detail-wrapper">
+                        <!-- Tempat Produk Ditampilkan -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Main End -->
+
+    <!-- feather icon  -->
+    <script>
+        feather.replace()
+    </script>
+
+    <!-- JS -->
+    <script src="../js/menu.js"></script>
+
+<script>
+    // Array Daftar menu / Product
+    const menuItems = [
+        { name: 'Ice Blend Freeazy', category: 'coffee', image: 'product_0_1.jpg', price: '9'},
+        { name: 'Ice Cloud Caramel Macchiato', category: 'noncoffee', image: 'product_1_1.jpg', price: '11'},
+        { name: 'Outlet List Combo', category: 'food', image: 'product_2_1.jpg', price: '25'},
+        { name: 'Ice Soft Serve', category: 'icekrim',image: 'product_3_1.jpg', price: '15'},
+        { name: 'Sumatra Coffee Beans', category: 'coffeeathome', image: 'product_4_1.jpg', price: '45'},
+        { name: 'Adorable Tumblr: Candy', category: 'merch', image: 'product_5_1.jpg', price: '50'},
+        { name: 'Toasted Coconut Latte', category: 'coffee', image: 'product_0_2.jpg', price: '9'},
+        { name: 'Choco Marshmallow', category: 'noncoffee', image: 'product_1_2.jpg', price: '12'},
+        { name: 'Food Selection Combo', category: 'food', image: 'product_2_2.jpg', price: '14'},
+        { name: 'Ice Soft Coffee Serve', category: 'icekrim', image: 'product_3_2.jpg', price: '12'},
+        { name: 'Casi Cielo Beans', category: 'coffeeathome', image: 'product_4_2.jpg', price: '50'},
+        { name: 'Adorable Tumblr: Popsicle', category: 'merch', image: 'product_5_2.jpg', price: '50'},
+        { name: 'Toasted Coconut Americano', category: 'coffee', image: 'product_0_3.jpg', price: '8'},
+        { name: 'Mango Yuzu Raspberry', category: 'noncoffee', image: 'product_1_3.jpg', price: '10'},
+        { name: 'Almond Croissant', category: 'food', image: 'product_2_3.jpg', price: '14'},
+        { name: 'Ice Soft Serve: Sugar Combo', category: 'icekrim', image: 'product_3_3.jpg', price: '12'},
+        { name: 'Honduras Marcala Beans', category: 'coffeeathome', image: 'product_4_3.jpg', price: '50'},
+        { name: 'Adorable Tumblr: Macaron', category: 'merch', image: 'product_5_3.jpg', price: '50'},
+        { name: 'Freezy Toasted Coconut Latte', category: 'coffee', image: 'product_0_4.jpg', price: '10'},
+        { name: 'Freezy Mango Yuzu', category: 'noncoffee', image: 'product_1_4.jpg', price: '8'},
+        { name : '', category: 'food', image: 'product_2_4.jpg', price: ''},
+        { name : '', category: 'icekrim', image: 'product_3_4.jpg', price: ''},
+        { name : '', category: 'coffeeathome', image: 'product_4_4.jpg', price: ''},
+        { name : '', category: 'merch', image: 'product_5_4.jpg', price: ''},
+        { name : '', category: 'coffee', image: 'product_0_5.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_5.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_5.jpg', price: ''},
+        { name : '', category: 'coffeeathome', image: 'product_4_5.jpg', price: ''},
+        { name : '', category: 'merch', image: 'product_5_5.jpg', price: ''},
+        { name : '', category: 'coffee', image: 'product_0_6.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_6.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_6.jpg', price: ''},
+        { name : '', category: 'coffeeathome', image: 'product_4_6.jpg', price: ''},
+        { name : '', category: 'merch', image: 'product_5_6.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_7.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_7.jpg', price: ''},
+        { name : '', category: 'merch', image: 'product_5_7.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_8.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_8.jpg', price: ''},
+        { name : '', category: 'merch', image: 'product_5_8.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_9.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_9.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_10.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_10.jpg', price: ''},
+        { name : '', category: 'noncoffee', image: 'product_1_11.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_11.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_1_12.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_12.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_13.jpg', price: ''},
+        { name : '', category: 'food', image: 'product_2_14.jpg', price: ''},
+    ];
+
+    // Fungsi Menampilkan produk dengan Looping elemen
+    function displayAllItems() {
+        const menuContainer = document.querySelector('.detail-wrapper');
+        menuContainer.innerHTML = '';
+        menuItems.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('pro');
+            itemElement.innerHTML = `
+                <img src="../img/item/${item.image}">
+                <div class="des">
+                    <h5>${item.name}</h5>
+                    <div class="star" style="color: gold;">
+                        ${generateStars()}
+                    </div>
+                    <h4>${item.price}K</h4>
+                </div>
+                <a href="#" onclick="addCart('${item.name}'); event.preventDefault();""><i class='bx bx-cart' id="cart" data-price="${item.price}"></i></a>
+            `;
+            menuContainer.appendChild(itemElement);
+        });
+    }
+
+    // Fungsi Loopping Bintang
+    function generateStars() {
+        let stars = '';
+        for (let i = 0; i < 5; i++) {
+            stars += "<i class='bx bxs-star'></i>";
+        }
+        return stars;
+    }
+
+    // Fungsi Filter Kategori
+    function filterCategory(category) {
+        const menuContainer = document.querySelector('.detail-wrapper');
+        menuContainer.innerHTML = '';
+        menuItems.forEach(item => {
+            if (item.category === category) {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('pro'); // Tambahkan class 'pro'
+                itemElement.innerHTML = `
+                    <img src="img/item/${item.image}">
+                    <div class="des">
+                        <h5>${item.name}</h5>
+                        <div class="star" style="color: gold;">
+                            ${generateStars()} <!-- Fungsi untuk menampilkan bintang-bintang -->
+                        </div>
+                        <h4>${item.price}K</h4>
+                    </div>
+                    <a href="#" onclick="addCart('${item.name}'); event.preventDefault();""><i class='bx bx-cart' id="cart" data-price="${item.price}"></i></a>
+                `;
+                menuContainer.appendChild(itemElement);
+            }
+        });
+        document.getElementById('categoryTitle').textContent = category;
+    }
+    displayAllItems();
+
+    
+
+    // Fungsi Tambah Keranjang
+    let listCart = [];
+    // mendapatkan data cookies cart
+    function checkCart() {
+        var cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('listCart='));
+        if (cookieValue) {
+            listCart = JSON.parse(cookieValue.split('=')[1]);
+        }
+    }
+    checkCart();
+
+    // Fungsi Pengecekan Produk di keranjang
+    function addCart(idProduct) {
+        // Jika produk Tidak Ada pada cart
+        if (!listCart[idProduct]) {
+            let dataProduct = menuItems.find(
+                product => product.name == idProduct
+            );
+            // Tambah data produk dalam cart
+            listCart[idProduct] = { ...dataProduct, quantity: 1 };
+        } else {
+            // jika produk sudah berada di keranjang
+            listCart[idProduct].quantity++;
+        }
+        // Cookies Data Keranjang
+        let timerSave = "expires=Thu, 31 Dec 2025 23:59:59 UTC";
+        document.cookie = "listCart=" + JSON.stringify(listCart) + "; " + timerSave;
+        addCartToHTML();
+        showNotification();
+    }
+
+    // Fungsi Menampilkan produk di page Keranjang
+    function addCartToHTML() {
+        // clear data default
+        let listCartHTML = document.querySelector('.listCart');
+        listCartHTML.innerHTML = '';
+
+        for (const key in listCart) {
+            if (listCart.hasOwnProperty(key)) {
+                const product = listCart[key];
+                let newCart = document.createElement('div');
+                newCart.classList.add('item');
+                newCart.innerHTML =
+                    `<img src="../img/item/${product.image}">
+                    <div class="content">
+                        <div class="name">
+                            ${product.name}
+                        </div>
+                        <div class="price">
+                            ${product.price}K / ${product.quantity} product
+                        </div>
+                    </div>
+                    <div class="quantity">
+                        <button onclick="changeQuantity('${key}', '-')"><b>-</b></button>
+                        <span class="value">${product.quantity}</span>
+                        <button onclick="changeQuantity('${key}', '+')"><b>+</b></button>
+                    </div>`;
+                listCartHTML.appendChild(newCart);
+            }
+        }
+    }
+    // Memanggil addCartToHTML setelah load halaman
+    document.addEventListener("DOMContentLoaded", addCartToHTML);
+
+    // Fungsi untuk menampilkan notifikasi produk berhasil ditambahkan ke keranjang
+    function showNotification() {
+        var notification = document.getElementById("notification");
+        notification.style.display = "block";
+
+        // Sembunyikan notifikasi setelah beberapa detik
+        setTimeout(function() {
+            notification.style.display = "none";
+        }, 3000); // Notifikasi akan hilang setelah 3 detik (3000 milidetik)
+    }
+
+    // Fungsi Tambah/Kurang produk pada keranjang
+    function changeQuantity(idProduct, type) {
+    switch (type) {
+        case '+':
+            listCart[idProduct].quantity++;
+            break;
+        case '-':
+            if (listCart[idProduct].quantity > 1) {
+                listCart[idProduct].quantity--;
+            } else {
+                delete listCart[idProduct];
+            }
+            break;
+        default:
+            break;
+    }
+    // Memperbarui tampilan HTML setelah mengubah kuantitas produk
+    addCartToHTML();
+}
+
+</script>
+</body>
+</html>

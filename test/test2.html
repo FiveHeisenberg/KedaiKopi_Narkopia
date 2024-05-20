@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Keranjang Belanja</title>
+</head>
+<body>
+
+<div class="icon-container">
+  <button id="cart-icon" onclick="toggleCart()">🛒</button>
+</div>
+
+<div class="cart-popup" id="cart-popup">
+  <div class="cart-content">
+    <span class="close" onclick="toggleCart()">&times;</span>
+    <h2>Keranjang Belanja</h2>
+    <p>Isi keranjang Anda:</p>
+    <ul id="cart-items">
+      <!-- Item keranjang akan ditambahkan melalui JavaScript -->
+    </ul>
+  </div>
+</div>
+
+<style>
+    /* Style untuk ikon keranjang */
+.icon-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+#cart-icon {
+  font-size: 24px;
+}
+
+/* Style untuk popup keranjang */
+.cart-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.cart-content {
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+// Fungsi untuk menampilkan/menyembunyikan popup keranjang dan menambahkan/menghapus kelas 'blur' pada elemen body kecuali cart popup
+function toggleCart() {
+  var cartPopup = document.getElementById("cart-popup");
+  var body = document.body;
+  if (cartPopup.style.display === "block") {
+    cartPopup.style.display = "none";
+    body.classList.remove("blur");
+  } else {
+    cartPopup.style.display = "block";
+    // Tambahkan kelas "blur" hanya jika popup keranjang ditampilkan
+    body.classList.add("blur");
+    // Tambahkan logika untuk menampilkan informasi keranjang di sini
+    displayCartItems();
+  }
+}
+
+// Fungsi untuk menampilkan informasi keranjang
+function displayCartItems() {
+  var cartItems = ['Item 1', 'Item 2', 'Item 3']; // Ganti dengan informasi keranjang yang sesuai
+  var cartList = document.getElementById("cart-items");
+  cartList.innerHTML = ''; // Kosongkan daftar sebelum menambahkan item baru
+  cartItems.forEach(function(item) {
+    var li = document.createElement("li");
+    li.textContent = item;
+    cartList.appendChild(li);
+  });
+}
+</script>
+</body>
+</html>

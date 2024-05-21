@@ -49,33 +49,3 @@ function toggleCart() {
         displayCartItems();
     }
 }
-
-
-// Swipper JS
-let swiperCards = new Swiper('.highlight-wrapper', {
-    loop: true,
-    spaceBetween: 32,
-    grabCursor: true,
-
-    // If we need pagination
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-    },
-
-    // Slide Autoplay
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-
-    breakpoints: {
-        600: {
-            slidesPerView: 2,
-        },
-        968: {
-            slidesPerView: 3,
-        },
-    },
-    });

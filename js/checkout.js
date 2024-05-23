@@ -45,3 +45,9 @@ function addCartToHTML() {
     totalQuantityHTML.innerText = totalQuantity;
     totalPriceHTML.innerHTML = totalPrice + 'K';
 }
+
+function setCartCookie() {
+    document.cookie = "listCart=" + JSON.stringify(listCart) + "; path=/";
+}
+
+// Panggil fungsi ini setiap kali produk ditambahkan atau dihapus dari keranjang

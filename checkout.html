@@ -22,7 +22,6 @@
 
 </head>
 <body>
-    
     <div class="container">
         <div class="checkoutLayout">
             <div class="returnCart">
@@ -37,35 +36,36 @@
 
             <div class="right">
                 <h1>Checkout</h1>
-                <div class="form">
+                <form action="process_checkout.php" method="POST">
                     <div class="group">
                         <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" required>
                     </div>
                     <div class="group">
                         <label for="phone">Phone Number</label>
-                        <input type="text" name="phone" id="phone">
+                        <input type="text" name="phone" id="phone" required>
                     </div>
                     <div class="group">
-                        <label for="city">Dine In / Take Away / Drive Thru</label>
-                        <select name="city" id="city">
-                            <option value="">Dine In</option>
-                            <option value="">Take Away</option>
-                            <option value="">Drive Thru</option>
+                        <label for="status">Dine In / Take Away / Drive Thru</label>
+                        <select name="status" id="status" required>
+                            <option value="dine in">Dine In</option>
+                            <option value="take away">Take Away</option>
+                            <option value="drive thru">Drive Thru</option>
                         </select>
                     </div>
-                </div>
-                <div class="return">
-                    <div class="row">
-                        <div>Total Item</div>
-                        <div class="totalQuantity"></div>
+                    <div class="return">
+                        <div class="row">
+                            <div>Total Item</div>
+                            <div class="totalQuantity"></div>
+                        </div>
+                        <div class="row">
+                            <div>Total Price</div>
+                            <div class="totalPrice"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div>Total Price</div>
-                        <div class="totalPrice"></div>
-                    </div>
-                </div>
-                <button class="buttonCheckout">CHECKOUT</button>
+                    <button class="buttonCheckout" type="submit">CHECKOUT</button>
+                </form>
+                                
             </div>
         </div>
     </div>

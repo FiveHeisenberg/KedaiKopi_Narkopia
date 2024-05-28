@@ -406,8 +406,8 @@ span {
     height: 100px;
     width: 100%;
     gap: 1.2rem;
+    flex-wrap: wrap; /* Allows wrapping of items in the container */
 }
-
 .filter-card a {
     display: flex;
     flex-direction: column;
@@ -551,15 +551,16 @@ span {
     z-index: 10000;
 }
 
+
 /* Media querry */
 
 /* Mobile */ 
 
 @media (max-width: 1768px) {
+
     .sidebar {
         display: none;
     }
-
     .main {
         margin-left: 0;
     }
@@ -646,6 +647,11 @@ span {
 }
 
 @media (max-width : 420px) {
+
+    .pro {
+        min-width: 300px;
+    }
+
     .filter-wrapper {
         flex-wrap: wrap;
         height: 17rem;
@@ -737,7 +743,7 @@ span {
     }
 }
 
-@media (max-width : 320px) {
+@media (min-width : 320px) {
     .pro {
         min-width: 7.5rem;
         min-height: 1rem;
@@ -777,4 +783,6 @@ span {
     .listCart .item span {
         width: 30px;
     }
+
+    
 }

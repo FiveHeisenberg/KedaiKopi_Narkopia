@@ -1,15 +1,12 @@
-const listCart = [];
+let listCart = [];
 
 function checkCart() {
     var cookieValue = document.cookie
         .split('; ')
         .find(row => row.startsWith('listCart='));
     if (cookieValue) {
-        const cartItems = JSON.parse(cookieValue.split('=')[1]);
-        // Clear the current contents of listCart
-        listCart.length = 0;
-        // Add new items to listCart
-        cartItems.forEach(item => listCart.push(item));
+        listCart = JSON.parse(cookieValue.split('=')[1]);
+        console.log("listCart from cookie:", listCart); // Debugging
     }
 }
 
@@ -25,7 +22,7 @@ function addCartToHTML() {
     let totalQuantity = 0;
     let totalPrice = 0;
 
-    if (listCart) {
+    if (listCart.length) {
         listCart.forEach(product => {
             if (product) {
                 let newP = document.createElement('div');
@@ -63,7 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const orders = JSON.parse(localStorage.getItem('listCart'));
 
-        console.log('listCart:', orders);
+        console.log('listCart:', orders); // Debugging
+
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]); 
+        }
 
         formData.append('orders', JSON.stringify(orders));
 
@@ -71,7 +72,20 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             body: formData
         }).then(response => response.text()).then(response => {
-            document.body.innerHTML = response;
+            console.log('Response from server:', response); // Debugging
+            // Create a temporary div to parse the response
+            let tempDiv = document.createElement('div');
+            tempDiv.innerHTML = response;
+            
+            // Append the parsed HTML content to the body
+            document.body.innerHTML = tempDiv.innerHTML;
+
+            // Extract and execute scripts from the response
+            tempDiv.querySelectorAll('script').forEach(script => {
+                const newScript = document.createElement('script');
+                newScript.textContent = script.textContent;
+                document.body.appendChild(newScript);
+            });
         }).catch(error => {
             console.error('Error:', error);
         });

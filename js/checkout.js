@@ -1,4 +1,4 @@
-let listCart = [];
+const listCart = [];
 
 function checkCart() {
     var cookieValue = document.cookie
@@ -27,7 +27,7 @@ function addCartToHTML() {
                 let newP = document.createElement('div');
                 newP.classList.add('item');
                 newP.innerHTML = `
-                <img src="img/item/${product.image}">
+                <img src="img/item/${product.image}" loading="lazy">
                 <div class="info">
                     <div class="name">${product.name}</div>
                     <div class="price">${product.price}K / ${product.quantity} product</div>
@@ -50,4 +50,26 @@ function setCartCookie() {
     document.cookie = "listCart=" + JSON.stringify(listCart) + "; path=/";
 }
 
-// Panggil fungsi ini setiap kali produk ditambahkan atau dihapus dari keranjang
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('checkoutForm');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const orders = JSON.parse(localStorage.getItem('listCart'));
+
+        console.log('listCart:', orders);
+
+        formData.append('orders', JSON.stringify(orders));
+
+        fetch('process_checkout.php', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.text()).then(response => {
+            document.body.innerHTML = response;
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    });
+});

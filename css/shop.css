@@ -19,7 +19,7 @@ html {
 
 body {
     background-color: #f8f3ee ;
-    color: #fff;
+    color: #efefef;
 }
 
 /* Scrollbar */
@@ -236,14 +236,38 @@ body {
 
 #product1 p {
     padding-top: 0.5rem;
+    padding-bottom: 2.5rem;
 }
 
 #product1 .pro-container {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center;
     padding-top: 20px;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: center; */
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: #000; /* Change color to suit your theme */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.swiper-pagination {
+    bottom: 10px; /* Adjust if pagination is off-screen */
+}
+
+.pro-container .swiper-slide {
+    flex-shrink: 0;
+    width: auto; /* Let Swiper handle the slide width */
+}
+
+.pro-container .swiper-wrapper {
+    display: flex;
 }
 
 .pro {
@@ -256,8 +280,8 @@ body {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
     margin: 15px 0;
     transition: 0.2 ease ;
-    position: relative;
-    overflow: hidden;
+    /* position: relative;
+    overflow: hidden; */
 }
 
 #product1 .pro:hover {
@@ -267,6 +291,7 @@ body {
 #product1 .pro img {
     width: 100%;
     border-radius: 20px;
+    height: auto;
 }
 
 #product1 .pro .des {

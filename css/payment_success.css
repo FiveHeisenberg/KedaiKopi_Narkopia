@@ -1,0 +1,90 @@
+:root {
+    --primary: #b6895b;
+    --bg: #010101;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.details {
+    align-items: center;
+    padding: 1.5rem;
+    font-family:'Courier New', Courier, monospace;
+}
+
+p {
+    display: flex;
+    justify-content:space-around;
+    font-size: 0.9rem;
+}
+
+strong {
+    font-size: 0.9rem;
+    flex: 1;
+    text-align: left;
+    /* border: 1px solid; */
+}
+
+span{
+    flex: 1;
+    text-align: left;
+    /* border: 1px solid; */
+    padding-left: 1rem;
+    font-weight: bold;
+}
+
+h1 {
+    color: var(--primary);
+    text-align: center;
+
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.button {
+    text-align: center;
+
+}
+
+button, .backButton {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.backButton {
+    font-size: .73rem;
+}
+
+button:hover, .backButton:hover {
+    background-color: var(--bg);
+}

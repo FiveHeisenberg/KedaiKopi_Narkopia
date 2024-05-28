@@ -44,12 +44,39 @@ foreach ($listCart as $product) {
 // Menyimpan data penjualan ke tabel tbsales
 foreach ($listCart as $product) {
     $id_product = $product['id'];
-    $sql_sales = "INSERT INTO tbsales (id_product, id_customer, status) VALUES ($id_product, $id_customer, '$status')";
+    $sql_sales = "INSERT INTO tbsales (id_product, id_customer, status, dates, times) VALUES ($id_product, $id_customer, '$status', CURDATE(), DATE_FORMAT(CURTIME(), '%H:%i'))";
     if ($conn->query($sql_sales) === TRUE) {
         echo "Record inserted successfully for product ID: $id_product<br>";
     } else {
         echo "Error: " . $sql_sales . "<br>" . $conn->error;
     }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $status = $_POST['status'];
+    $orders = json_decode($_COOKIE['listCart'], true); // Mengambil data Cookie dari JSON
+
+    // Menginisialisasi variabel untuk menampung total items dan price
+    $totalItems = 0;
+    $totalPrice = 0;
+
+    // Kalkulasi total items dan total Price
+    foreach ($orders as $order) {
+        $totalItems += $order['quantity'];
+        $totalPrice += $order['quantity'] * $order['price'];
+    }
+
+    // Simpan data di sessionStorage pakai JavaScript dan arahkan ke halaman struk
+    echo "<script>
+        sessionStorage.setItem('customerName', '$name');
+        sessionStorage.setItem('customerPhone', '$phone');
+        sessionStorage.setItem('pickupMethod', '$status');
+        sessionStorage.setItem('totalItems', '$totalItems');
+        sessionStorage.setItem('totalPrice', '$totalPrice');
+        window.location.href = 'payment_success.html';
+    </script>";
 }
 
 $conn->close();

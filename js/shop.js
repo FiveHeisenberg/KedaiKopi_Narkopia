@@ -1,8 +1,9 @@
 let navbar = document.querySelector('.navbar-nav');
 const hamburger = document.querySelector('#hamburger');
 
+// Menghentikan default action dari link
 hamburger.onclick = (e) => {
-    e.preventDefault(); // Menghentikan default action dari link
+    e.preventDefault(); 
     navbar.classList.toggle('active');
 }
 
@@ -14,7 +15,7 @@ document.addEventListener('click', function(e) {
 });
 
 
-
+// Setting Swipper
 let swiperCards = new Swiper('.pro-container.swiper', {
     pagination: '.pro-container.swiper',
     slidesPerView: 3,
@@ -24,17 +25,17 @@ let swiperCards = new Swiper('.pro-container.swiper', {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView : 'auto',
-  
+
     pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
     },
-  
-    // Navigation arrows
+
+    // Panah Navigasi
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
     },
 
     // Slide Autoplay
@@ -52,29 +53,5 @@ let swiperCards = new Swiper('.pro-container.swiper', {
         },
         
     },
-
-    // breakpoints: {
-    //     1000: {
-    //         slidesPerView: 3,
-    //     },
-    //     968: {
-    //         slidesPerView: 3,
-    //     },
-    //     948: {
-    //         slidesPerView: 3,
-    //     },
-    //     936: {
-    //         slidesPerView: 3,
-    //     },
-    //     914: {
-    //         slidesPerView: 3,
-    //     },
-    //     857: {
-    //         slidesPerView: 4,
-    //     },
-        // 768: {
-        //     slidesPerView : 2,
-        // },
-    // },
 });
 

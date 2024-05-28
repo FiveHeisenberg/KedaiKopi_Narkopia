@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
 
@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
 
     <!-- Icon -->
-    <script src="https://unpkg.com/feather-icons"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- CSS -->
@@ -36,7 +35,7 @@
 
             <div class="right">
                 <h1>Checkout</h1>
-                <form action="process_checkout.php" method="POST">
+                <form action="process_checkout.php" method="POST" class="form" id="checkoutForm">
                     <div class="group">
                         <label for="name">Full Name</label>
                         <input type="text" name="name" id="name" required>
@@ -48,9 +47,9 @@
                     <div class="group">
                         <label for="status">Dine In / Take Away / Drive Thru</label>
                         <select name="status" id="status" required>
-                            <option value="dine in">Dine In</option>
-                            <option value="take away">Take Away</option>
-                            <option value="drive thru">Drive Thru</option>
+                            <option value="Dine in">Dine In</option>
+                            <option value="Take away">Take Away</option>
+                            <option value="Drive thru">Drive Thru</option>
                         </select>
                     </div>
                     <div class="return">
@@ -71,5 +70,12 @@
     </div>
 
     <script src="js/checkout.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear sessionStorage to avoid conflicts with previous purchases
+            sessionStorage.clear();
+        });
+    </script>     
 </body>
 </html>

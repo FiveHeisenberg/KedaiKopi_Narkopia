@@ -200,6 +200,7 @@ span {
     z-index: 5000;
     animation: slideIn 0.5s ease forwards, slideOut 0.5s ease forwards 3s; /* Animasi masuk dan keluar */
     display: none;
+    z-index: 10000;
 }
 
 @keyframes slideIn {
@@ -251,13 +252,22 @@ span {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem; /* Mengurangi padding untuk konsistensi */
+    padding: 1rem; 
     background-color: var(--primary);
     color: #fff;
 }
 
+/* Pesan Jika Keranjang Kosong */
+.cart-empty {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+
 .cart-main {
-    padding: 1rem 3rem; /* Mengubah padding */
+    padding: 1rem 3rem;
     flex-grow: 1;
     height: 22rem;
 }
@@ -522,6 +532,25 @@ span {
     background-color: var(--primary);
     color: #fff;
 }
+
+
+/* Notifikasi Checkout */
+.checkout-notification {
+    text-align: center;
+    position: fixed;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333; /* Warna latar belakang notifikasi */
+    color: #fff; /* Warna teks notifikasi */
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 5000;
+    animation: slideIn 0.5s ease forwards, slideOut 0.5s ease forwards 3s; /* Animasi masuk dan keluar */
+    display: none;
+    z-index: 10000;
+}
+
 /* Media querry */
 
 /* Mobile */ 

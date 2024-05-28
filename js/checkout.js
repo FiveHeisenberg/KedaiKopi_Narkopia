@@ -5,7 +5,11 @@ function checkCart() {
         .split('; ')
         .find(row => row.startsWith('listCart='));
     if (cookieValue) {
-        listCart = JSON.parse(cookieValue.split('=')[1]);
+        const cartItems = JSON.parse(cookieValue.split('=')[1]);
+        // Clear the current contents of listCart
+        listCart.length = 0;
+        // Add new items to listCart
+        cartItems.forEach(item => listCart.push(item));
     }
 }
 

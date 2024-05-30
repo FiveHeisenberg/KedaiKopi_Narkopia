@@ -18,6 +18,12 @@
 </head>
 <body>
     <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <h3>Nar<span>kopia.</span></h3>
+        </div>
+        <hr>
+        <!-- Header -->
         <div class="receipt">
             <h1>Pembayaran Berhasil</h1>
             <h2>Struk Pembayaran</h2>
@@ -27,21 +33,34 @@
                 <p><strong>Nama</strong>:<span id="customerName"></span></p>
                 <p><strong>Nomor Telepon</strong>:<span id="customerPhone"></span></p>
                 <p><strong>Metode Pengambilan</strong>:<span id="pickupMethod"></span></p>
+                <p><strong>Tanggal</strong>:<span id="paymentDate"></span></p>
+                <p><strong>Jam</strong>:<span id="paymentTime"></span></p>
                 <p><strong>Total Item</strong>:<span id="totalItems"></span></p>
-                <p><strong>Total Harga</strong>:<span id="totalPrice"></span></p>
+                <p><strong>Total Harga</strong>:<span id="totalPrice"></span></p>         
             </div>
+            <hr>
             <div class="ket">
-                <p>Terima Kasih sudah belanja!</p>
+                <p>Terima Kasih dan Selamat Menikmati!</p>
             </div>
 
             <!-- Tombol cetak struk dan kembali ke menu -->
-            <div class="button">
-                <button onclick="window.print()">Cetak Struk</button>
+            <div class="button" id="button">
+                <button onclick="handlePrintClick()">Cetak Struk</button>
                 <a href="menu.html" class="backButton" id="backToMenu">Kembali ke Menu</a>
             </div>
 
         </div>
     </div>
     <script src="js/payment_success.js"></script>
+    <script>
+        function handlePrintClick() {
+            document.getElementById("button").style.display = "none";
+            window.print();
+        }
+
+        window.addEventListener("afterprint", function() {
+            document.getElementById("button").style.display = "block";
+        });
+    </script>
 </body>
 </html>

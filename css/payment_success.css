@@ -39,6 +39,19 @@ strong {
     /* border: 1px solid; */
 }
 
+.logo {
+    font-size: 2.5rem;
+    color: #010101;
+    font-style: italic;
+    text-align: center;
+    margin: -2rem;
+}
+
+.logo span {
+    color:  var(--primary);
+    padding: 0;
+}
+
 span{
     flex: 1;
     text-align: left;
@@ -54,6 +67,7 @@ h1 {
 }
 
 h2 {
+    font-family: 'Courier New', Courier, monospace;
     color: #333;
     margin-bottom: 20px;
     text-align: center;

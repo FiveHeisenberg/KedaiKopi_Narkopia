@@ -4,12 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let pickupMethod = sessionStorage.getItem('pickupMethod');
     let totalItems = sessionStorage.getItem('totalItems');
     let totalPrice = sessionStorage.getItem('totalPrice');
+    
+    let currentDateTime = new Date();
+    let formattedDate = currentDateTime.toLocaleDateString('id-ID', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+    
+    // Custom format for time
+    let hours = currentDateTime.getHours().toString().padStart(2, '0');
+    let minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
+    let formattedTime = `${hours}.${minutes} WIB`;
 
     document.getElementById('customerName').innerText = customerName;
     document.getElementById('customerPhone').innerText = customerPhone;
     document.getElementById('pickupMethod').innerText = pickupMethod;
-    document.getElementById('totalItems').innerText = totalItems;
-    document.getElementById('totalPrice').innerText = totalPrice;
+    document.getElementById('totalItems').innerText = totalItems + ' Pcs';
+    document.getElementById('totalPrice').innerText = totalPrice + 'K';
+    document.getElementById('paymentDate').innerText = formattedDate;
+    document.getElementById('paymentTime').innerText = formattedTime;
 });
 
 function deleteCookie(name) {

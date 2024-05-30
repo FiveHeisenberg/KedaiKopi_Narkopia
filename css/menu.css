@@ -182,6 +182,17 @@ span {
     border-radius: 50px;
 }
 
+.cart {
+    transition: position 0.3s, top 0.3s; /* Smooth transition */
+}
+
+.fixed-cart {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2000;
+}
+
 .cart:hover, .user:hover {
     box-shadow: rgba(145, 157, 165,0.2) 0px 8px 24px;
     background-color: var(--bg);
@@ -406,8 +417,8 @@ span {
     height: 100px;
     width: 100%;
     gap: 1.2rem;
-    flex-wrap: wrap; /* Allows wrapping of items in the container */
 }
+
 .filter-card a {
     display: flex;
     flex-direction: column;
@@ -541,9 +552,9 @@ span {
     top: -2rem;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333; /* Warna latar belakang notifikasi */
-    color: #fff; /* Warna teks notifikasi */
-    padding: 5px 10px;
+    background-color: #333;
+    color: #fff; 
+    padding: 10px 10px;
     border-radius: 5px;
     z-index: 5000;
     animation: slideIn 0.5s ease forwards, slideOut 0.5s ease forwards 3s; /* Animasi masuk dan keluar */
@@ -551,16 +562,15 @@ span {
     z-index: 10000;
 }
 
-
 /* Media querry */
 
 /* Mobile */ 
 
 @media (max-width: 1768px) {
-
     .sidebar {
         display: none;
     }
+
     .main {
         margin-left: 0;
     }
@@ -647,11 +657,6 @@ span {
 }
 
 @media (max-width : 420px) {
-
-    .pro {
-        min-width: 300px;
-    }
-
     .filter-wrapper {
         flex-wrap: wrap;
         height: 17rem;
@@ -743,7 +748,7 @@ span {
     }
 }
 
-@media (min-width : 320px) {
+@media (max-width : 320px) {
     .pro {
         min-width: 7.5rem;
         min-height: 1rem;
@@ -783,6 +788,4 @@ span {
     .listCart .item span {
         width: 30px;
     }
-
-    
 }

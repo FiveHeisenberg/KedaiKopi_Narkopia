@@ -38,15 +38,23 @@ document.addEventListener("DOMContentLoaded", function() {
 function toggleCart() {
     var cartPopup = document.getElementById("cart-popup");
     var body = document.body;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (cartPopup.style.display === "block") {
         cartPopup.style.display = "none";
-        body.classList.remove("blur");
     } else {
         cartPopup.style.display = "block";
-        // Menampilkan informasi keranjang Dengan Fungsi
-        displayCartItems();
     }
 }
+
+// Ketika Scroll Icon Cart akan mengikuti
+window.addEventListener('scroll', function() {
+    const cartIcon = document.querySelector('.cart');
+    if (window.scrollY > 40) { // Adjust the scroll value as needed
+        cartIcon.classList.add('fixed-cart');
+    } else {
+        cartIcon.classList.remove('fixed-cart');
+    }
+});
 
 // Fungsi Periksa jika keranjang kosong akan muncul notifikasi
 function validateCheckout() {

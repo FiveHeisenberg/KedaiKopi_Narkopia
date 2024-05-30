@@ -56,15 +56,14 @@
 
             <!-- Logo Profile & Cart -->
             <div class="profile">
-                <a href="#" class="cart" onclick="toggleCart()">
-                    <i class='bx bxs-cart'></i>
-                    <span class="cart-item-count">0</span>
-                </a>
                 <a href="#" class="user">
                     <i class='bx bx-user-circle'></i>
                 </a>
+                <a class="cart" onclick="toggleCart()">
+                    <i class='bx bxs-cart'></i>
+                    <span class="cart-item-count">0</span>
+                </a>
             </div>
-
         </div>
 
         <!-- Notifikasi Input Produk Ke Keranjang -->
@@ -287,7 +286,7 @@
                                     ${product.price}K / ${product.quantity} product
                                 </div>
                             </div>
-                            <div class="quantity">
+                            <div class="quantity" id="cart-item-count">
                                 <button onclick="changeQuantity('${product.name}', '-')"><b>-</b></button>
                                 <span class="value">${product.quantity}</span>
                                 <button onclick="changeQuantity('${product.name}', '+')"><b>+</b></button>

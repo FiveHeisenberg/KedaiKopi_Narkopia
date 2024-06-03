@@ -15,7 +15,8 @@
     <!-- Icon Web -->
     <link rel="icon" type="image/x-icon" href="img/logo/logo.png">
     
-</head>
+    <!-- ICON -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 <body>
     <div class="container">
         <!-- Logo -->
@@ -46,12 +47,38 @@
             <!-- Tombol cetak struk dan kembali ke menu -->
             <div class="button" id="button">
                 <button onclick="handlePrintClick()">Cetak Struk</button>
-                <a href="menu.html" class="backButton" id="backToMenu">Kembali ke Menu</a>
+                <a href="#" class="backButton" id="backToMenu">Kembali ke Menu</a>
             </div>
 
         </div>
     </div>
-    <script src="js/payment_success.js"></script>
+
+    <!-- Pop Up untuk rating -->
+    <div id="ratingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Beri Rating Kami</h2>
+            <div class="rating">
+                <i class='bx bxs-star' data-value="1"></i>
+                <i class='bx bxs-star' data-value="2"></i>
+                <i class='bx bxs-star' data-value="3"></i>
+                <i class='bx bxs-star' data-value="4"></i>
+                <i class='bx bxs-star' data-value="5"></i>
+            </div>
+            <button id="submitRating">Submit</button>
+        </div>
+    </div>
+
+    <!-- Modal untuk ucapan terima kasih -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeThankYou">&times;</span>
+            <h2>Terima Kasih!</h2>
+            <p>Terima kasih atas rating Anda!</p>
+            <button id="goToMenu">Kembali ke Menu</button>
+        </div>
+    </div>
+
     <script>
         function handlePrintClick() {
             document.getElementById("button").style.display = "none";
@@ -61,6 +88,79 @@
         window.addEventListener("afterprint", function() {
             document.getElementById("button").style.display = "block";
         });
+
+        document.getElementById('backToMenu').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default action
+            document.getElementById('ratingModal').style.display = 'block'; // Show the modal
+        });
+
+        const stars = document.querySelectorAll('.rating i');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = this.getAttribute('data-value');
+                updateStars(selectedRating);
+            });
+
+            star.addEventListener('mouseover', function() {
+                updateStars(this.getAttribute('data-value'));
+            });
+
+            star.addEventListener('mouseout', function() {
+                updateStars(selectedRating);
+            });
+        });
+
+        function updateStars(rating) {
+            stars.forEach(star => {
+                if (star.getAttribute('data-value') <= rating) {
+                    star.classList.add('selected');
+                    star.classList.remove('hovered');
+                } else {
+                    star.classList.remove('selected');
+                    star.classList.remove('hovered');
+                }
+            });
+        }
+
+        document.getElementById('submitRating').addEventListener('click', function() {
+            if (selectedRating > 0) {
+                console.log('Rating submitted:', selectedRating);
+                // TODO: Send rating to the server or handle it accordingly
+                document.getElementById('ratingModal').style.display = 'none'; // Hide the rating modal
+                document.getElementById('thankYouModal').style.display = 'block'; // Show the thank you modal
+            } else {
+                alert('Please select a rating before submitting.');
+            }
+        });
+
+        document.getElementById('closeThankYou').addEventListener('click', function() {
+            document.getElementById('thankYouModal').style.display = 'none'; // Hide the modal
+            deleteCookie('listCart'); // Delete the cookie
+            window.location.href = 'menu.html'; // Redirect to the menu page
+        });
+
+        document.getElementById('goToMenu').addEventListener('click', function() {
+            document.getElementById('thankYouModal').style.display = 'none'; // Hide the modal
+            deleteCookie('listCart'); // Delete the cookie
+            window.location.href = 'menu.html'; // Redirect to the menu page
+        });
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('ratingModal').style.display = 'none'; // Hide the modal
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('ratingModal')) {
+                document.getElementById('ratingModal').style.display = 'none'; // Hide the modal
+            }
+        };
+
+        function deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        }
     </script>
+    <script src="js/payment_success.js"></script>
 </body>
 </html>

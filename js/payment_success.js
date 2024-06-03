@@ -31,5 +31,26 @@ function deleteCookie(name) {
 document.getElementById('backToMenu').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default action
     deleteCookie('listCart'); // Delete the cookie
-    window.location.href = 'menu.html'; // Redirect to the menu page
 });
+
+document.getElementById('submitRating').addEventListener('click', function() {
+    if (selectedRating > 0) {
+        console.log('Rating submitted:', selectedRating);
+        // Kirim rating ke server
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "submit_rating.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        let idCustomer = sessionStorage.getItem('idCustomer'); // Pastikan idCustomer tersedia di sessionStorage
+        xhr.send("id_customer=" + idCustomer + "&rating=" + selectedRating);
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('ratingModal').style.display = 'none'; // Hide the rating modal
+                document.getElementById('thankYouModal').style.display = 'block'; // Show the thank you modal
+            }
+        };
+    } else {
+        alert('Please select a rating before submitting.');
+    }
+});
+

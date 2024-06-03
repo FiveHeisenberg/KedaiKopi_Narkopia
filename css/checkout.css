@@ -82,6 +82,7 @@ body {
     margin-top: 20px;
     font-weight: bold;
     color: #fff;
+    transition: all 300ms;
 }
 
 .buttonCheckout:hover {

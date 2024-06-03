@@ -97,6 +97,7 @@ body {
     margin: 0;
     padding: 8px 10px;
     font-weight: 500;
+    transition: all 300ms;
 }
 
 .navbar .navbar-nav a:hover {
@@ -107,6 +108,8 @@ body {
 .navbar .navbar-extra a {
     color: #fff;
     margin: 0 0.5rem;
+    transition: all 300ms;
+
 }
 
 .navbar .navbar-extra a:hover {
@@ -176,6 +179,7 @@ body {
     background-color: var(--primary); 
     border-radius: 5rem;
     box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+    transition: all 300ms;
 }
 
 .hero .content .cta:hover {
@@ -301,6 +305,7 @@ body {
 }
 
 .shop .cta:hover {
+    transition: all 300ms;
     background-color: #916c47;
 }
 
@@ -496,6 +501,7 @@ body {
     color: #fff;
     background-color: var(--primary);
     cursor: pointer;
+    transition: all 300ms;
 }
 
 .contact .row form .btn:hover {
@@ -557,6 +563,7 @@ body {
     padding: 7px;
     background: var(--primary);
     border-radius: 0.8rem;
+    transition: all 300ms;
 }
 
 .social a:hover {
@@ -576,6 +583,7 @@ body {
 .footer-box li a {
     color: #fff;
     font-size: 1.1rem;
+    transition: all 300ms;
 }
 
 .footer-box li a:hover {
@@ -608,6 +616,7 @@ body {
 .credit a {
     color: var(--primary);
     font-weight: 700;
+    transition: all 300ms;
 }
 
 .credit a:hover {

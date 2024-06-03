@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 98vh;
     background-color: #f4f4f4;
 }
 
@@ -93,6 +93,7 @@ button, .backButton {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    transition: all 300ms;
 }
 
 .backButton {

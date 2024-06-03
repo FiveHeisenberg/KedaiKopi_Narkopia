@@ -100,6 +100,7 @@ span {
     gap: 1rem;
     text-decoration: none;
     color: #fff; 
+    transition: all 300ms;
 }
 
 .sidebar-menus a:hover , .sidebar-acc a:hover {
@@ -135,6 +136,7 @@ span {
     justify-content: space-around;
     background-color: #fff;
     border-radius: 20px;
+    transition: all 300ms;
 }
 
 .search input {
@@ -152,6 +154,7 @@ span {
     border-radius: 20px;
     width: 120px;
     cursor: pointer;
+    transition: all 300ms;
 }
 
 .search:hover {
@@ -180,10 +183,12 @@ span {
     height: 40px;
     border: 50%;
     border-radius: 50px;
+    transition: all 300ms;
 }
 
 .cart {
     transition: position 0.3s, top 0.3s; /* Smooth transition */
+    transition: all 300ms;
 }
 
 .fixed-cart {
@@ -329,9 +334,17 @@ span {
     font-size: 24px;
     cursor: pointer;
     color: #fff;
+    border: 1px solid var(--bg);
+    padding: 5px;
+    border-radius: 100%;
+    padding-left: .7rem;
+    padding-right: .7rem;
+    transition: all 300ms;
+    background-color: var(--bg);
 }
 
 .close:hover {
+    background-color: var(--primary);
     color: var(--bg);
 }
 
@@ -354,16 +367,18 @@ span {
 }
 
 .checkout-button {
-    background-color: var(--primary);
-    color: #fff;
+    background-color: var(--bg);
+    color: #eee;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 300ms;
 }
 
 .checkout-button:hover {
-    background-color: #010101;
+    background-color: var(--primary);
+    color: var(--bg);
 }
 
 /* Main Menu */
@@ -401,15 +416,6 @@ span {
     gap: 1rem;
 }
 
-.main-arrow-menu {
-    cursor: pointer;
-    font-size: 1.5rem;
-}
-
-#kiri:hover, #kanan:hover {
-    color: var(--bg);
-}
-
 .filter-wrapper {
     display: flex;
     justify-content: center;
@@ -433,6 +439,7 @@ span {
     font-size: 14px;
     cursor: pointer;
     color: #010101;
+    transition: all 300ms;
 }
 
 .filter-card a:hover {
@@ -488,10 +495,11 @@ span {
     transition: 0.2 ease ;
     position: relative;
     overflow: hidden;
+    transition: all 300ms;
 }
 
 .pro:hover {
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, .2);
 }
 
 .pro img {
@@ -537,6 +545,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 300ms;
 }
 
 .pro #cart:hover {

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
     });
     
-    // Custom format for time
+    // Custom format waktu
     let hours = currentDateTime.getHours().toString().padStart(2, '0');
     let minutes = currentDateTime.getMinutes().toString().padStart(2, '0');
     let formattedTime = `${hours}.${minutes} WIB`;
@@ -24,33 +24,99 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('paymentTime').innerText = formattedTime;
 });
 
-function deleteCookie(name) {
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+// Ketika ingin print struk, tombol akan menghilang
+function handlePrintClick() {
+    document.getElementById("button").style.display = "none";
+    window.print();
 }
 
+// Ketika sudah print struk, tombol akan mencul kembali
+window.addEventListener("afterprint", function() {
+    document.getElementById("button").style.display = "block";
+});
+
+// Ketika tombol "Kembali ke menu di klik, akan muncul pop up"
 document.getElementById('backToMenu').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default action
-    deleteCookie('listCart'); // Delete the cookie
+    event.preventDefault(); 
+    document.getElementById('ratingModal').style.display = 'block'; // Menampilkan Popup Rating
+});
+
+const stars = document.querySelectorAll('.rating i');
+let selectedRating = 0;
+
+stars.forEach(star => {
+    star.addEventListener('click', function() {
+        selectedRating = this.getAttribute('data-value');
+        updateStars(selectedRating);
+    });
+
+    star.addEventListener('mouseover', function() {
+        updateStars(this.getAttribute('data-value'));
+    });
+
+    star.addEventListener('mouseout', function() {
+        updateStars(selectedRating);
+    });
+});
+
+function updateStars(rating) {
+    stars.forEach(star => {
+        if (star.getAttribute('data-value') <= rating) {
+            star.classList.add('selected');
+            star.classList.remove('hovered');
+        } else {
+            star.classList.remove('selected');
+            star.classList.remove('hovered');
+        }
+    });
+}
+
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('ratingModal').style.display = 'none'; // Hide the modal
 });
 
 document.getElementById('submitRating').addEventListener('click', function() {
-    if (selectedRating > 0) {
-        console.log('Rating submitted:', selectedRating);
-        // Kirim rating ke server
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", "submit_rating.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        let idCustomer = sessionStorage.getItem('idCustomer'); // Pastikan idCustomer tersedia di sessionStorage
-        xhr.send("id_customer=" + idCustomer + "&rating=" + selectedRating);
+    let customerId = sessionStorage.getItem('customerId'); // Pastikan customerId sudah disimpan di sessionStorage
+    
+    if (!customerId) {
+        alert('Customer ID not found.');
+        return;
+    }
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                document.getElementById('ratingModal').style.display = 'none'; // Hide the rating modal
-                document.getElementById('thankYouModal').style.display = 'block'; // Show the thank you modal
-            }
-        };
+    if (selectedRating > 0) {
+        fetch('submit_rating.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id_customer=${customerId}&rating=${selectedRating}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Rating submitted:', data);
+            document.getElementById('ratingModal').style.display = 'none'; // Hide pop rating
+            document.getElementById('thankYouModal').style.display = 'block'; // menampilkan pop up ucapan
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     } else {
         alert('Please select a rating before submitting.');
     }
 });
 
+document.getElementById('goToMenu').addEventListener('click', function() {
+    document.getElementById('thankYouModal').style.display = 'none'; // Hide pop up 
+    deleteCookie('listCart'); // menghapus cookie
+    window.location.href = 'menu.html'; // menggarah ke menu.html
+});
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('ratingModal')) {
+        document.getElementById('ratingModal').style.display = 'none'; // Hide the modal
+    }
+};
+
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}

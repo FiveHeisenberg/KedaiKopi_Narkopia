@@ -88,26 +88,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>";
 }
 
-
-// Rating 
-// Memeriksa apakah data POST tersedia
-$sql_customer = "INSERT INTO tbcustomer (customername, telephone) VALUES ('$customername', '$telephone')";
-if ($conn->query($sql_customer) === TRUE) {
-    $id_customer = $conn->insert_id; // Mendapatkan id_customer yang baru dimasukkan
-    
-    // Simpan id_customer di sesi PHP
-    session_start();
-    $_SESSION['id_customer'] = $id_customer;
-    
-    // Simpan id_customer ke sessionStorage melalui JavaScript
-    echo "<script>
-        sessionStorage.setItem('customerId', '$id_customer');
-    </script>";
-} else {
-    echo "Error: " . $sql_customer . "<br>" . $conn->error;
-    exit();
-}
-
-
 $conn->close();
 ?>

@@ -1,6 +1,7 @@
 # ☕ Narkopia - Coffee Shop Website
 
-![Narkopia Banner](https://i.imgur.com/WMNzIAA.png)
+![Narkopia Banner](https://i.imgur.com/HuA9qB3.jpeg)
+
 
 > **Narkopia** adalah website kedai kopi modern yang dibangun dengan teknologi web fundamental tanpa framework, menawarkan pengalaman berbelanja kopi dan makanan secara online yang elegan dan user-friendly.
 
@@ -11,7 +12,9 @@
 
 ## 📸 Preview
 
-![Screenshot](https://imgur.com/WMNzIAA)
+![Screenshot](https://i.imgur.com/WMNzIAA.png)
+![ss](https://i.imgur.com/i5LzY9b.png)
+
 
 ## ✨ Fitur Utama
 
@@ -66,8 +69,8 @@ KedaiKopi_Narkopia/
 ## 🚀 Cara Menjalankan Proyek
 
 ### Prerequisites
-- Web server dengan dukungan PHP (XAMPP, WAMP, atau hosting)
-- Database MySQL/MariaDB
+- Web server dengan dukungan PHP (Laragon)
+- Database MySQL
 - Browser modern
 
 ### Instalasi
@@ -104,16 +107,6 @@ KedaiKopi_Narkopia/
 - [ ] Sistem notifikasi real-time
 - [ ] PWA (Progressive Web App) support
 - [ ] Multi-language support
-
-## 🤝 Kontribusi
-
-Kontribusi selalu diterima! Untuk berkontribusi:
-
-1. Fork repository
-2. Buat branch fitur (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buat Pull Request
 
 
 ## 👨‍💻 Developer

@@ -1,6 +1,6 @@
 # ☕ Narkopia - Coffee Shop Website
 
-![Narkopia Banner](https://imgur.com/HuA9qB3)
+[img]https://i.imgur.com/WMNzIAA.png[/img]
 
 > **Narkopia** adalah website kedai kopi modern yang dibangun dengan teknologi web fundamental tanpa framework, menawarkan pengalaman berbelanja kopi dan makanan secara online yang elegan dan user-friendly.
 

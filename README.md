@@ -50,26 +50,27 @@
 ```
 KedaiKopi_Narkopia/
 ├── index.html              # Halaman utama
-├── css/
-│   ├── style.css          # Main stylesheet
-│   └── responsive.css     # Media queries
+├── css/                    # Styling Page
+├── img/                    # Asset Gambar
 ├── js/
-│   ├── main.js           # JavaScript utama
-│   ├── cart.js           # Logika keranjang
-│   └── filter.js         # Filter menu
-├── php/
-│   ├── config.php        # Konfigurasi database
-│   └── process.php       # Pemrosesan data
-├── assets/
-│   ├── images/           # Gambar produk dan aset
-│   └── icons/            # Icon dan logo
-└── README.md             # Dokumentasi proyek
+│   ├── checkout.js         # Fitur Checkout
+│   ├── menu.js             # Logika Menu
+│   ├── payment_success.js  # Cetak Struk Pembelian
+│   ├── script.js           # Script Halaman Utama
+│   ├── shop.js             # Logika Halaman kedua
+│   └──swiper-bundle.min.js # Fitur Slides Menu dan Testimoni
+├── checkout.html           # Halaman Checkout Keranjang
+├── menu.html               # Halaman Menu Product
+├── menu.json               # Dataset lokal informasi product
+├── payment_success.html    # Halaman Struk Belanja
+├── process_checkout.php    # Koneksi dan Input data database
+└── README.md               # Dokumentasi proyek
 ```
 
 ## 🚀 Cara Menjalankan Proyek
 
 ### Prerequisites
-- Web server dengan dukungan PHP (Laragon)
+- Web server dengan dukungan PHP (Laragon atau Xampp)
 - Database MySQL
 - Browser modern
 
